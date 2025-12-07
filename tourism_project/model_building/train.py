@@ -92,20 +92,15 @@ print("Recall   :", recall)
 print("F1 Score :", f1)
 
 # ======================================================
-# Register Best Model (MLflow)
-# ======================================================
-mlflow.sklearn.log_model(
-    best_model,
-    artifact_path="xgboost_model",
-    registered_model_name="Tourism_XGBoost_Model"
-)
-
-# ======================================================
 # Save Best Model Locally
 # ======================================================
 model_path = "best_tourism_model.joblib"
 joblib.dump(best_model, model_path)
 print("Model saved locally")
+
+ # Log the model artifact
+mlflow.log_artifact(model_path, artifact_path="model")
+print(f"Model saved as artifact at: {model_path}")
 
 # Upload to Hugging Face
 repo_id = "anithajk/tourism_model"
