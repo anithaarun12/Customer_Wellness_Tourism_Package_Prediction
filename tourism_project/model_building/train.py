@@ -15,6 +15,9 @@ import os
 from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 
+mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_experiment("tourism_project-training-experiment")
+
 api = HfApi()
 
 Xtrain_path = "hf://datasets/anithajk/Customer_Wellness_Tourism_Package_Prediction/Xtrain.csv"
