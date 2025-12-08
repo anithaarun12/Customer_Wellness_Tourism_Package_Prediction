@@ -79,12 +79,12 @@ grid_search = GridSearchCV(model_pipeline, param_grid, cv=5, n_jobs=-1, scoring=
 grid_search.fit(Xtrain, ytrain)
 
 # Best model
-best_model = grid_search.best_estimator_
+best_pipeline = grid_search.best_estimator_
 
 print("Best Params:", grid_search.best_params_)
 
 # Predictions
-y_pred = best_model.predict(Xtest)
+y_pred = best_pipeline.predict(Xtest)
 
 # Performance
 print("\n=== Model Performance ===")
@@ -92,8 +92,8 @@ print(classification_report(ytest, y_pred))
 
 # Save final model
 os.makedirs("models", exist_ok=True)
-model_path = "models/best_tourism_model.joblib"
-joblib.dump(best_model, model_path)
+model_path = "models/best_tourism_pipeline.joblib"
+joblib.dump(best_pipeline, model_path)
 
 print(f"Model saved at: {model_path}")
 
@@ -110,7 +110,7 @@ except RepositoryNotFoundError:
 
 api.upload_file(
     path_or_fileobj=model_path,
-    path_in_repo="best_tourism_model.joblib",
+    path_in_repo="best_tourism_pipeline.joblib",
     repo_id=repo_id,
     repo_type=repo_type
 )
