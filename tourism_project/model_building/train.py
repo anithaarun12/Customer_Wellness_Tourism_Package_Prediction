@@ -29,7 +29,7 @@ Xtest  = pd.read_csv(Xtest_path)
 ytrain = pd.read_csv(ytrain_path)
 ytest  = pd.read_csv(ytest_path)
 
-# Feature definitions (same as prep.py)
+# Feature definitions
 numeric_features = [
     "Age",
     "DurationOfPitch",
@@ -114,4 +114,4 @@ api.upload_file(
     repo_type=repo_type
 )
 
-print("🚀 Model uploaded to Hugging Face successfully!")
+print("Model uploaded to Hugging Face successfully!")
